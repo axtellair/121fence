@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>121Fence – Professional Fencing Solutions</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== Reset & Variables ===== */
+        :root {
+            --primary: #086afe;
+            --primary-hover: #257af8;
+            --dark: #031530;
+            --text: #374c6c;
+            --light-bg: #ebf5ff;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 6px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.75;
+            background: var(--white);
+        }
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+        a:hover {
+            color: var(--primary-hover);
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            color: var(--dark);
+            clear: none;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== Navigation ===== */
+        .navbar {
+            background: var(--white);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 80px; /* ← 修改此值即可调整 Logo 大小 */
+            width: auto;
+            display: block;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ===== Sections ===== */
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .section-sub {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                url('https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/10abaec35cb02864478b9d96d0053686.jpg')
+                center/cover no-repeat;
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 52px;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            opacity: 0.9;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            padding: 14px 36px;
+            border-radius: var(--radius);
+            font-weight: 500;
+            display: inline-block;
+            transition: background 0.2s;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            color: var(--white);
+        }
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            padding: 12px 28px;
+            border-radius: var(--radius);
+            font-weight: 500;
+            display: inline-block;
+            border: 2px solid var(--primary);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* ===== Grid & Cards ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-body h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        .card-body p {
+            color: var(--text);
+            font-size: 15px;
+        }
+        .card-body .tag {
+            display: inline-block;
+            background: var(--light-bg);
+            color: var(--primary);
+            font-size: 13px;
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+        .size-badge {
+            display: inline-block;
+            background: #eef2f6;
+            color: var(--dark);
+            font-size: 13px;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-right: 6px;
+            margin-top: 6px;
+        }
+        .card .click-hint {
+            display: block;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 500;
+            opacity: 0.7;
+        }
+        .card:hover .click-hint {
+            opacity: 1;
+        }
+
+        /* ===== Product Detail View ===== */
+        #productDetail {
+            display: none;
+            padding: 40px 0;
+        }
+        #productDetail.active {
+            display: block;
+        }
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .detail-header h2 {
+            font-size: 34px;
+        }
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .detail-grid .main-image {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .detail-grid .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .detail-grid .info-section .short-desc {
+            font-size: 18px;
+            color: var(--text);
+        }
+        .detail-grid .info-section .specs {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: var(--radius);
+        }
+        .detail-grid .info-section .specs p {
+            margin: 6px 0;
+        }
+        .detail-grid .info-section .specs strong {
+            color: var(--dark);
+            display: inline-block;
+            min-width: 120px;
+        }
+        .detail-grid .info-section .full-desc {
+            line-height: 1.8;
+        }
+        .detail-grid .info-section .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            background: var(--white);
+            padding: 16px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+        .detail-grid .info-section .feature-list span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .detail-actions {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Contact ===== */
+        .contact-section {
+            background: var(--light-bg);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .contact-info h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+        .contact-info p {
+            margin-bottom: 20px;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .contact-detail svg {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+        }
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            transition: background 0.2s;
+        }
+        .social-icons a:hover {
+            background: var(--primary);
+        }
+        .social-icons a:hover svg {
+            fill: var(--white);
+        }
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--dark);
+        }
+        .map-wrapper {
+            margin-top: 24px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 280px;
+            border: 0;
+        }
+        .form-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .form-card label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--dark);
+        }
+        .form-card input,
+        .form-card textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-family: inherit;
+            margin-bottom: 18px;
+            transition: border-color 0.2s;
+        }
+        .form-card input:focus,
+        .form-card textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(8, 106, 254, 0.15);
+        }
+        .form-card textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-card .btn-primary {
+            width: 100%;
+            padding: 14px;
+            font-size: 18px;
+        }
+        .form-success {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 16px;
+            border-radius: var(--radius);
+            margin-top: 16px;
+            text-align: center;
+        }
+        .form-success.show {
+            display: block;
+        }
+        .form-error {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 16px;
+            border-radius: var(--radius);
+            margin-top: 16px;
+            text-align: center;
+        }
+        .form-error.show {
+            display: block;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 15px;
+        }
+        footer a {
+            color: var(--white);
+        }
+
+        /* ===== Hide list view when detail is active ===== */
+        #mainContent.hidden {
+            display: none;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 16px;
+                width: 100%;
+                padding: 16px 0;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .navbar {
+                flex-wrap: wrap;
+                padding: 12px 20px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .detail-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .hero {
+                padding: 60px 16px;
+            }
+            .hero h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== Navigation ===== -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/888.jpg" alt="121Fence Logo" />
+        </div>
+        <button class="mobile-toggle" aria-label="Menu" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
+        <div class="nav-links">
+            <a href="#home" id="navHome">Home</a>
+            <a href="#products" id="navProducts">Products</a>
+            <a href="#cases" id="navCases">Cases</a>
+            <a href="#contact" id="navContact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ===== Hero ===== -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Professional Fencing, Strong &amp; Beautiful</h1>
+            <p>High-quality PVC fencing solutions for farms, gardens, and commercial properties – durable and maintenance‑free.</p>
+            <a href="#contact" class="btn-primary">Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT (List View) ===== -->
+    <div id="mainContent">
+        <!-- ===== Products ===== -->
+        <section id="products" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Products</h2>
+                <p class="section-sub">Choose from premium fencing panels and accessories to match your privacy, security, and aesthetic needs.</p>
+
+                <!-- Fencing Panels -->
+                <h3 style="text-align:center; margin-bottom:20px; font-weight:500;">Fencing Panels</h3>
+                <div class="grid" id="panelGrid">
+                    <div class="card" data-product="privacy">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/155cb35e4551a4f5b9327626e7fc0386-1.jpg" alt="Privacy Fence" />
+                        <div class="card-body">
+                            <h3>Privacy Fence</h3>
+                            <p>Solid panels offer maximum privacy and noise reduction. Perfect for backyards, pools, and residential perimeters.</p>
+                            <div>
+                                <span class="size-badge">6' x 6'</span>
+                                <span class="size-badge">6' x 8'</span>
+                            </div>
+                            <span class="tag">Privacy First</span>
+                            <span class="click-hint">Click for details →</span>
+                        </div>
+                    </div>
+                    <div class="card" data-product="semi">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/e5beaee4bfa1e59bbee78987_20260425094944_4683_1.jpg" alt="Semi-Privacy Fence" />
+                        <div class="card-body">
+                            <h3>Semi-Privacy Fence</h3>
+                            <p>Decorative gaps balance seclusion and airflow, ideal for front yards, gardens, or areas that need partial screening.</p>
+                            <div>
+                                <span class="size-badge">6' x 6'</span>
+                                <span class="size-badge">6' x 8'</span>
+                            </div>
+                            <span class="tag">Stylish &amp; Airy</span>
+                            <span class="click-hint">Click for details →</span>
+                        </div>
+                    </div>
+                    <div class="card" data-product="ranch">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/e5beaee4bfa1e59bbee78987_20260425094939_4675_1.jpg" alt="Ranch Fence" />
+                        <div class="card-body">
+                            <h3>Ranch / Horse Fence</h3>
+                            <p>Classic horizontal rail design, robust and safe for livestock. Maintains open views while ensuring animal security.</p>
+                            <div>
+                                <span class="size-badge">6' x 6'</span>
+                                <span class="size-badge">6' x 8'</span>
+                            </div>
+                            <span class="tag">Pasture Proven</span>
+                            <span class="click-hint">Click for details →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accessories -->
+                <h3 style="text-align:center; margin:40px 0 20px; font-weight:500;">Accessories</h3>
+                <div class="grid" id="accessoryGrid">
+                    <div class="card" data-product="posts">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/423898b97d9d48548b286b43a9c91ae6.png" alt="Upright Posts" />
+                        <div class="card-body">
+                            <h3>Posts</h3>
+                            <p>Heavy‑duty support posts, available in various heights and finishes to match your panels.</p>
+                            <span class="click-hint">Click for details →</span>
+                        </div>
+                    </div>
+                    <div class="card" data-product="mrails">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/f19cc15f38e7db4749b95de2f53e38a1.png" alt="Middle Rails" />
+                        <div class="card-body">
+                            <h3>Middle Rails</h3>
+                            <p>Horizontal rails that add strength and stability between posts for all panel types.</p>
+                            <span class="click-hint">Click for details →</span>
+                        </div>
+                    </div>
+                    <div class="card" data-product="brails">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/4b636ba08daf374cf1fa74f780149520.png" alt="Bottom Rails" />
+                        <div class="card-body">
+                            <h3>Bottom Rails</h3>
+                            <p>Reinforce the base of your fence, preventing sagging and keeping panels level.</p>
+                            <span class="click-hint">Click for details →</span>
+                        </div>
+                    </div>
+                    <div class="card" data-product="boards">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/cf438e83c8280345900dc546412280dc.png" alt="Fence Boards" />
+                        <div class="card-body">
+                            <h3>Boards / Planks</h3>
+                            <p>Vertical or horizontal boards that form the main surface of privacy and semi‑privacy fences.</p>
+                            <span class="click-hint">Click for details →</span>
+                        </div>
+                    </div>
+                    <div class="card" data-product="Caps">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/caac81fff0230add4034efdf09fd771e.png" alt="Caps" />
+                        <div class="card-body">
+                            <h3>Caps</h3>
+                            <p>Decorative caps to finish off fence posts and enhance appearance.</p>
+                            <span class="click-hint">Click for details →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Cases ===== -->
+        <section id="cases" class="section" style="background: var(--light-bg);">
+            <div class="container">
+                <h2 class="section-title">Success Stories</h2>
+                <p class="section-sub">We've delivered quality fencing for hundreds of homes and businesses. Here are a few highlights.</p>
+                <div class="grid">
+                    <div class="card" style="cursor:default;">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/e5beaee4bfa1e59bbee78987_20260425094937_4673_1-1.jpg" alt="Ranch" />
+                        <div class="card-body">
+                            <h3>Texas Ranch</h3>
+                            <p>Installed PVC rail fencing over 100 acres – stands up to harsh weather and heavy use.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="cursor:default;">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/155cb35e4551a4f5b9327626e7fc0386.jpg" alt="Garden" />
+                        <div class="card-body">
+                            <h3>Dallas Private Garden</h3>
+                            <p>White picket fence blends perfectly with landscaping, boosting curb appeal and privacy.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="cursor:default;">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/e5beaee4bfa1e59bbee78987_20260425094939_4675_1.jpg" alt="Commercial Park" />
+                        <div class="card-body">
+                            <h3>Commercial Park</h3>
+                            <p>Secure and attractive perimeter fencing for a business campus – functional and professional.</p>
+                        </div>
+                    </div>
+                    <div class="card" style="cursor:default;">
+                        <img src="https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/e5beaee4bfa1e59bbee78987_20260425094944_4683_1.jpg" alt="City Park" />
+                        <div class="card-body">
+                            <h3>City Park</h3>
+                            <p>Semi‑privacy panels installed in a municipal park, ensuring safety without blocking views.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Contact ===== -->
+        <section id="contact" class="contact-section section">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-sub">We’d love to hear from you. Reach out via the details below or use the form.</p>
+                <div class="contact-grid">
+                    <!-- Left: Info -->
+                    <div class="contact-info">
+                        <div class="contact-detail">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" /></svg>
+                            <div>
+                                <strong>Address</strong><br />
+                                5211 Co Rd 597, Farmersville, TX 75442
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" /></svg>
+                            <div>
+                                <strong>Phone</strong><br />
+                                (972) 807-5555
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>
+                            <div>
+                                <strong>Email</strong><br />
+                                <a href="mailto:sale@121fence.com" target="_blank" rel="noopener noreferrer">sale@121fence.com</a>
+                            </div>
+                        </div>
+
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12z" /></svg></a>
+                            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg></a>
+                            <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></a>
+                            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg></a>
+                        </div>
+
+                        <div class="map-wrapper">
+                            <iframe src="https://maps.google.com/maps?q=5211%20Co%20Rd%20597%2C%20Farmersville%2C%20TX%2075442&t=m&z=12&output=embed&iwloc=near" allowfullscreen="" loading="lazy" title="Company location"></iframe>
+                        </div>
+                    </div>
+
+                    <!-- ===== Contact Form (使用 Formsubmit.co，无需注册) ===== -->
+                    <div class="form-card">
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                            <!-- ★★★ 请将以下邮箱替换为您自己的接收邮箱 ★★★ -->
+                            <input type="hidden" name="_captcha" value="true" />
+                            <input type="hidden" name="_template" value="table" />
+                            <input type="hidden" name="_next" value="https://your-website.com/thank-you" /> <!-- 可选，提交后跳转 -->
+
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="example@domain.com" required />
+
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your fencing needs..." required></textarea>
+
+                            <button type="submit" class="btn-primary" id="submitBtn">Send Message</button>
+
+                            <div id="formSuccess" class="form-success">✅ Message sent! We'll get back to you shortly.</div>
+                            <div id="formError" class="form-error">❌ Failed to send. Please try again or contact us directly.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- ===== END mainContent ===== -->
+
+    <!-- ===== PRODUCT DETAIL VIEW ===== -->
+    <section id="productDetail">
+        <div class="container">
+            <div class="detail-header">
+                <button class="back-btn" onclick="goBackToList()">← Back to Products</button>
+                <h2 id="detailTitle">Product Name</h2>
+            </div>
+            <div class="detail-grid">
+                <img class="main-image" id="detailImage" src="" alt="Product detail" />
+                <div class="info-section">
+                    <p class="short-desc" id="detailShort">Short description</p>
+                    <div class="specs" id="detailSpecs">
+                        <p><strong>Dimensions:</strong> <span id="detailSizes"></span></p>
+                        <p><strong>Material:</strong> <span id="detailMaterial"></span></p>
+                        <p><strong>Colors:</strong> <span id="detailColors">White, Tan, Brown</span></p>
+                    </div>
+                    <div class="full-desc" id="detailFull">Full description goes here.</div>
+                    <div class="feature-list" id="detailFeatures">
+                        <span>✔ Feature 1</span>
+                        <span>✔ Feature 2</span>
+                    </div>
+                    <div class="detail-actions">
+                        <a href="#contact" class="btn-primary" id="detailQuoteBtn">Request a Quote</a>
+                        <button class="btn-secondary" onclick="goBackToList()">Back to Products</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <p>&copy; 2026 <a href="#home" id="footerHome">121Fence</a> — Premium Fencing Solutions in Texas</p>
+    </footer>
+
+    <!-- ===== Scripts ===== -->
+    <script>
+        // ================================================================
+        // 方案一：使用 Formsubmit.co（推荐，无需注册，只需替换上面的邮箱）
+        // 表单的 action 已在 JS 中动态设置，使用 fetch 异步提交
+        // ================================================================
+
+        // ★★★ 请替换为您自己的接收邮箱（与上面隐藏字段中的邮箱保持一致）★★★
+        const YOUR_EMAIL = 'your@email.com'; // <-- 修改此处
+
+        // ----- Product Data (保持不变) -----
+        const productData = {
+            privacy: {
+                title: "Privacy Fence",
+                image: "https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/155cb35e4551a4f5b9327626e7fc0386-1.jpg",
+                short: "Solid PVC panels for complete seclusion and noise reduction.",
+                sizes: "6' x 6' and 6' x 8'",
+                material: "High‑grade UV‑stabilized PVC, steel‑reinforced posts optional",
+                colors: "White, Tan, Brown, Custom",
+                full: "Our Privacy Fence offers a solid barrier that blocks sight lines and dampens sound, making it perfect for residential backyards, swimming pools, and commercial perimeters. The interlocking design ensures no gaps, and the PVC material resists rot, insects, and weathering – no painting or staining ever needed. With a 20‑year warranty, this fence is built to last.",
+                features: ["100% privacy", "Low maintenance", "20‑year warranty", "Easy installation", "Fade‑resistant"]
+            },
+            semi: {
+                title: "Semi-Privacy Fence",
+                image: "https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/e5beaee4bfa1e59bbee78987_20260425094944_4683_1.jpg",
+                short: "Decorative open slats that balance privacy with airflow.",
+                sizes: "6' x 6' and 6' x 8'",
+                material: "Premium PVC with weather‑resistant coating",
+                colors: "White, Almond, Gray",
+                full: "The Semi‑Privacy Fence features staggered pickets that create a visually appealing pattern while allowing gentle breeze and natural light to pass through. It’s ideal for front yards, garden enclosures, or areas where you want partial screening without feeling closed in. Durable and stylish, it enhances curb appeal and comes with rust‑proof hardware.",
+                features: ["Partial screening", "Great airflow", "Rust‑proof hardware", "Customizable colors", "Easy to clean"]
+            },
+            ranch: {
+                title: "Ranch / Horse Fence",
+                image: "https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/e5beaee4bfa1e59bbee78987_20260425094939_4675_1.jpg",
+                short: "Classic rail fencing designed for livestock safety and open views.",
+                sizes: "6' x 6' and 6' x 8' (rail spacing adjustable)",
+                material: "Heavy‑duty PVC with impact‑resistant cores",
+                colors: "White, Black, Dark Brown",
+                full: "Our Ranch Fence is trusted by equestrian facilities and cattle ranches across Texas. The horizontal rails are spaced to prevent animals from getting stuck, yet maintain a clear sightline. The PVC construction withstands chewing, kicking, and extreme weather, ensuring your livestock stays secure for decades. Quick assembly and no splintering make it a favorite among farmers.",
+                features: ["Livestock‑safe spacing", "No splintering", "UV‑protected", "Quick assembly", "Impact‑resistant"]
+            },
+            posts: {
+                title: "Fence Posts",
+                image: "https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/423898b97d9d48548b286b43a9c91ae6.png",
+                short: "Strong, durable posts that anchor your fence system.",
+                sizes: "4', 6', 8' and custom lengths",
+                material: "Galvanized steel or PVC‑sleeved steel for extra rigidity",
+                colors: "White, Green, Black",
+                full: "Posts are the backbone of any fence. We offer both standard PVC posts and heavy‑duty steel posts with a PVC coating to resist rust. They come with pre‑drilled holes for easy rail attachment and are designed to handle high wind loads. Choose from round or square profiles to match your aesthetic.",
+                features: ["Corrosion‑resistant", "Pre‑drilled", "Easy to set", "Compatible with all panels", "High wind rating"]
+            },
+            mrails: {
+                title: "Middle Rails",
+                image: "https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/f19cc15f38e7db4749b95de2f53e38a1.png",
+                short: "Horizontal rails that add structural integrity between posts.",
+                sizes: "6' and 8' standard, custom cuts available",
+                material: "High‑density PVC with internal reinforcement",
+                colors: "White, Tan, Gray",
+                full: "Middle rails connect your posts and support the fence panels, preventing bowing and maintaining alignment. They are essential for tall fences or areas with strong winds. Our rails feature a slip‑fit design for fast installation and are available in matching colors to blend seamlessly.",
+                features: ["Reinforced core", "Quick‑connect", "Weather‑proof", "Matching finishes", "Easy to replace"]
+            },
+            brails: {
+                title: "Bottom Rails",
+                image: "https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/4b636ba08daf374cf1fa74f780149520.png",
+                short: "Sturdy bottom rails to keep panels level and secure.",
+                sizes: "6' and 8' standard",
+                material: "PVC with extra wall thickness for ground contact",
+                colors: "White, Brown, Black",
+                full: "Bottom rails elevate the fence panels off the ground, reducing moisture exposure and preventing rot. They also provide a solid anchor for pickets or boards. Our bottom rails are designed to be easily attached to posts and come with drainage holes to prevent water buildup, ensuring long‑term durability.",
+                features: ["Moisture‑resistant", "Easy to install", "Pre‑cut to panel size", "Long‑lasting", "Drainage holes"]
+            },
+            boards: {
+                title: "Boards / Planks",
+                image: "https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/cf438e83c8280345900dc546412280dc.png",
+                short: "Vertical or horizontal boards that form the main surface.",
+                sizes: "Width: 5.5” or 7.25” · Length: 6' or 8'",
+                material: "Solid PVC with wood‑grain texture option",
+                colors: "White, Cedar, Driftwood",
+                full: "Our fence boards are available in both smooth and wood‑grain finishes. They are used to fill in privacy and semi‑privacy panels. The boards interlock with rails to create a seamless, gap‑free appearance. They resist fading, cracking, and are easy to clean – just hose down to keep them looking new.",
+                features: ["Wood‑grain or smooth", "Fade‑resistant", "No painting", "Easy to replace", "Interlocking design"]
+            },
+            Caps: {
+                title: "Caps",
+                image: "https://lorenalee0817-zxtoi.wordpress.com/wp-content/uploads/2026/08/caac81fff0230add4034efdf09fd771e.png",
+                short: "Decorative caps to finish off fence posts and enhance appearance.",
+                sizes: "Fits standard post sizes: 4x4, 5x5",
+                material: "High‑density PVC with UV protection",
+                colors: "White, Black, Dark Brown",
+                full: "Our post caps provide a clean, finished look to your fence. They protect the post from moisture and add a decorative touch. Available in various styles including flat, pyramid, and ball top. Easy to install and durable.",
+                features: ["Weather‑resistant", "Easy to install", "Multiple styles", "Fade‑proof", "Low maintenance"]
+            }
+        };
+
+        // ----- DOM references -----
+        const mainContent = document.getElementById('mainContent');
+        const detailSection = document.getElementById('productDetail');
+        const detailTitle = document.getElementById('detailTitle');
+        const detailImage = document.getElementById('detailImage');
+        const detailShort = document.getElementById('detailShort');
+        const detailSizes = document.getElementById('detailSizes');
+        const detailMaterial = document.getElementById('detailMaterial');
+        const detailColors = document.getElementById('detailColors');
+        const detailFull = document.getElementById('detailFull');
+        const detailFeatures = document.getElementById('detailFeatures');
+        const detailQuoteBtn = document.getElementById('detailQuoteBtn');
+
+        // ----- Navigation functions -----
+        function showProductDetail(productKey) {
+            const data = productData[productKey];
+            if (!data) return;
+
+            detailTitle.textContent = data.title;
+            detailImage.src = data.image;
+            detailImage.alt = data.title;
+            detailShort.textContent = data.short;
+            detailSizes.textContent = data.sizes;
+            detailMaterial.textContent = data.material;
+            detailColors.textContent = data.colors;
+            detailFull.textContent = data.full;
+            detailFeatures.innerHTML = data.features.map(f => `<span>✔ ${f}</span>`).join('');
+            detailQuoteBtn.href = '#contact';
+
+            mainContent.classList.add('hidden');
+            detailSection.classList.add('active');
+
+            const newUrl = window.location.pathname + '?product=' + productKey;
+            history.pushState({ product: productKey }, '', newUrl);
+            detailSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function goBackToList() {
+            mainContent.classList.remove('hidden');
+            detailSection.classList.remove('active');
+            const cleanUrl = window.location.pathname + window.location.hash;
+            history.pushState({}, '', cleanUrl);
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ----- Popstate -----
+        window.addEventListener('popstate', function(e) {
+            const params = new URLSearchParams(window.location.search);
+            const product = params.get('product');
+            if (product && productData[product]) {
+                if (!detailSection.classList.contains('active')) {
+                    mainContent.classList.add('hidden');
+                    detailSection.classList.add('active');
+                    const data = productData[product];
+                    detailTitle.textContent = data.title;
+                    detailImage.src = data.image;
+                    detailImage.alt = data.title;
+                    detailShort.textContent = data.short;
+                    detailSizes.textContent = data.sizes;
+                    detailMaterial.textContent = data.material;
+                    detailColors.textContent = data.colors;
+                    detailFull.textContent = data.full;
+                    detailFeatures.innerHTML = data.features.map(f => `<span>✔ ${f}</span>`).join('');
+                    detailQuoteBtn.href = '#contact';
+                }
+            } else {
+                if (detailSection.classList.contains('active')) {
+                    mainContent.classList.remove('hidden');
+                    detailSection.classList.remove('active');
+                }
+            }
+        });
+
+        // ----- Click events for product cards -----
+        document.querySelectorAll('.card[data-product]').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const key = this.dataset.product;
+                showProductDetail(key);
+            });
+        });
+
+        // ----- Intercept nav links to close detail -----
+        document.querySelectorAll('.nav-links a, .logo, #footerHome').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (detailSection.classList.contains('active')) {
+                    const target = e.currentTarget.getAttribute('href');
+                    if (target && target.startsWith('#')) {
+                        e.preventDefault();
+                        goBackToList();
+                        setTimeout(() => {
+                            const el = document.querySelector(target);
+                            if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
+                    } else {
+                        goBackToList();
+                    }
+                }
+            });
+        });
+        document.getElementById('footerHome').addEventListener('click', function(e) {
+            if (detailSection.classList.contains('active')) {
+                e.preventDefault();
+                goBackToList();
+                setTimeout(() => {
+                    document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        });
+
+        // ================================================================
+        // 表单提交处理 – 使用 Formsubmit.co
+        // ================================================================
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const successEl = document.getElementById('formSuccess');
+            const errorEl = document.getElementById('formError');
+
+            successEl.classList.remove('show');
+            errorEl.classList.remove('show');
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // 检查邮箱是否已替换
+            if (YOUR_EMAIL === 'your@email.com') {
+                errorEl.textContent = '❌ 请先在代码中设置您的接收邮箱（YOUR_EMAIL）。';
+                errorEl.classList.add('show');
+                return;
+            }
+
+            // 收集表单数据（字段 name 必须与 Formsubmit 期望一致）
+            const formData = new FormData(form);
+            // 添加 _captcha 和 _template 已通过隐藏字段添加
+
+            // 提交到 Formsubmit.co
+            const url = `https://formsubmit.co/${YOUR_EMAIL}`;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json',
+                    },
+                });
+
+                if (response.ok) {
+                    successEl.classList.add('show');
+                    form.reset();
+                } else {
+                    const errorText = await response.text();
+                    console.error('Formsubmit error:', errorText);
+                    errorEl.textContent = '❌ Failed to send. Please try again later.';
+                    errorEl.classList.add('show');
+                }
+            } catch (err) {
+                console.error('Fetch error:', err);
+                errorEl.textContent = '❌ Network error. Please check your connection.';
+                errorEl.classList.add('show');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                setTimeout(() => {
+                    successEl.classList.remove('show');
+                    errorEl.classList.remove('show');
+                }, 8000);
+            }
+        }
+
+        // ================================================================
+        // (可选) 若您仍想使用 EmailJS，请取消注释以下代码并替换三个 ID
+        // 同时注释掉上面的 Formsubmit 相关逻辑
+        // ================================================================
+        /*
+        const EMAILJS_SERVICE_ID = 'service_xxxxxxxx';
+        const EMAILJS_TEMPLATE_ID = 'template_xxxxxxxx';
+        const EMAILJS_USER_ID = 'user_xxxxxxxx';
+
+        if (EMAILJS_USER_ID && EMAILJS_USER_ID !== 'user_xxxxxxxx') {
+            emailjs.init({ publicKey: EMAILJS_USER_ID });
+        }
+
+        // 然后修改 handleFormSubmit 为 EmailJS 版本（略）
+        */
+
+        // ----- On load check URL param -----
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const product = params.get('product');
+            if (product && productData[product]) {
+                mainContent.classList.add('hidden');
+                detailSection.classList.add('active');
+                const data = productData[product];
+                detailTitle.textContent = data.title;
+                detailImage.src = data.image;
+                detailImage.alt = data.title;
+                detailShort.textContent = data.short;
+                detailSizes.textContent = data.sizes;
+                detailMaterial.textContent = data.material;
+                detailColors.textContent = data.colors;
+                detailFull.textContent = data.full;
+                detailFeatures.innerHTML = data.features.map(f => `<span>✔ ${f}</span>`).join('');
+                detailQuoteBtn.href = '#contact';
+            }
+        });
+    </script>
+</body>
+</html>
